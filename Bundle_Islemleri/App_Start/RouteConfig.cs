@@ -14,6 +14,21 @@ namespace Bundle_Islemleri
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name:"UrlRewrite",
+                url:"anasayfa",
+                defaults: new {controller="Home", action="Index"}
+                );
+            routes.MapRoute(
+               name: "UrlRewrite2",
+               url: "kisi-bilgileri",
+               defaults: new { controller = "User", action = "Detail" }
+               );
+            routes.MapRoute(
+                name:"FormatliUrl",
+                url:"{haberAdi}--{id}-haberi",
+                defaults:new {controller="Haber", action="Detay", id="{id}", haberAdi= "{haberAdi}" }
+                );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
